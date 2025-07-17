@@ -1,0 +1,19 @@
+/* src/app/components/splash-screen/splash-screen.component.css */
+
+.splash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.splash-logo {
+  font-size: 3rem;
+  /* İleride bir resim logosu kullanırsanız:
+   width: 200px;
+   height: auto;
+  */
+}
