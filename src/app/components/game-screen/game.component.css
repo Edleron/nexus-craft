@@ -1,0 +1,76 @@
+/* src/app/components/game-container/game-container.component.css */
+
+:host {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a202c;
+  color: white;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2d3748;
+  flex-shrink: 0; /* Küçülmesini engelle */
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 1; /* Mevcut alanı kapla */
+  overflow: hidden; /* Taşmaları engelle */
+}
+
+.left-panel, .right-panel {
+  width: 20%;
+  background-color: #2d3748;
+  padding: 15px;
+  overflow-y: auto; /* İçerik taşarsa scroll çıksın */
+}
+
+.center-area {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.game-view {
+  flex-grow: 1;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.bet-controls {
+  flex-shrink: 0;
+  padding-top: 15px;
+}
+
+.history-bar {
+  flex-shrink: 0;
+  padding: 10px;
+  background-color: #2d3748;
+  white-space: nowrap; /* Yatayda kaydırma için */
+  overflow-x: auto;
+}
+
+/* Basit mobil uyumluluk */
+@media (max-width: 768px) {
+  .left-panel, .right-panel {
+    display: none; /* Küçük ekranlarda yan panelleri gizle */
+  }
+  .center-area {
+    width: 100%;
+  }
+}
