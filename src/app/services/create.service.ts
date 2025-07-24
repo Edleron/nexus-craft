@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { LocalizationService } from './localization.service';
 // Örnek olarak WebSocket ve Localization servislerini import edelim
 // import { WebsocketService } from './websocket.service';
 // import { LocalizationService } from './localization.service';
@@ -8,7 +9,7 @@ import { Injectable, inject } from '@angular/core';
 })
 export class CreateService {
   // private websocketService = inject(WebsocketService);
-  // private localizationService = inject(LocalizationService);
+  private localizationService = inject(LocalizationService);
 
   /**
    * Bu metot, uygulamanın çalışması için gereken tüm asenkron
@@ -19,8 +20,8 @@ export class CreateService {
     console.log('[Init] Uygulama başlatma görevleri başlıyor...');
 
     const tasks = [
-      this.connectToWebsocket(),    // WebSocket'e bağlan
-      this.loadLocalizationData(), // Dil dosyalarını yükle
+      this.connectToWebsocket(),        // WebSocket'e bağlan
+      this.localizationService.init(),  // Dil dosyalarını yükle
       // Buraya diğer başlangıç görevlerini ekleyebilirsin
     ];
 
@@ -46,17 +47,6 @@ export class CreateService {
         console.log('[Init] WebSocket bağlantısı başarılı.');
         resolve();
       }, 1500); // 1.5 saniye gecikme simülasyonu
-    });
-  }
-
-  private loadLocalizationData(): Promise<void> {
-    return new Promise(resolve => {
-      console.log('[Init] Dil dosyaları yükleniyor...');
-      // Gerçek senaryoda: this.localizationService.load()...
-      setTimeout(() => {
-        console.log('[Init] Dil dosyaları yüklendi.');
-        resolve();
-      }, 1000); // 1 saniye gecikme simülasyonu
     });
   }
 }
