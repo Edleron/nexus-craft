@@ -2,5 +2,22 @@
   "splash": {
     "welcome": "Hoş Geldiniz",
     "initializing": "Başlatılıyor..."
+  },
+    "navbar": {
+      "game-name": "Oyun İsmi",
+      "navbar-content": "Navbar İçeriği"
+  },
+    "sidebar": {
+      "logo-name": "Logo",
+      "history-content": "Geçmiş İçeriği"
+  },
+    "content": {
+      "seven-panel": "7. GEÇMİŞ DEĞERLER",
+      "six-a-panel": "6a. BET YAPMA 1",
+      "six-b-panel": "6b. BET YAPMA 2",
+      "six-c-panel": "6C. BET YAPMA 3",
+      "five-a-panel": "5a. GAME (OYUN )CANVAS",
+      "five-b-panel": "5b CHAT PANELİ",
+      "four-panel": "4. GEÇMİŞ LİSTE PANELİ"
   }
 }

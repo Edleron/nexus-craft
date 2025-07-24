@@ -2,5 +2,22 @@
   "splash": {
     "welcome": "Welcome",
     "initializing": "Initializing..."
+  },
+  "navbar": {
+    "game-name": "Game Name",
+    "navbar-content": "Navbar Content"
+  },
+  "sidebar": {
+    "logo-name": "Logo",
+    "history-content": "History Content"
+  },
+  "content": {
+      "seven-panel": "7. PAST VALUES",
+      "six-a-panel": "6a. BET 1",
+      "six-b-panel": "6b. BET 2",
+      "six-c-panel": "6C. BET 3",
+      "five-a-panel": "5a. GAME CANVAS",
+      "five-b-panel": "5b. CHAT",
+      "four-panel": "4. PAST LIST PANEL"
   }
 }
