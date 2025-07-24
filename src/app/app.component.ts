@@ -1,53 +1,34 @@
-// src/app/app.component.ts
-
-import { Component, OnInit } from '@angular/core';
+import { Component, signal, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-// Ayar ve durum tanımlarımızı import edelim
-import { GameState, APP_SETTINGS } from './app.config';
-
-// Gerekli tüm alt bileşenler
-import { SplashScreenComponent } from './components/splash-screen/splash.component';
-import { SPLASH_SCREEN_CONFIG } from './components/splash-screen/splash.config';
-import { LoadingScreenComponent } from './components/loading-screen/loading.component';
-import { GameContainerComponent } from './components/game-screen/game.component';
+import NavbarComponent from './components/ui-side/navbar/navbar.component';
+import MainSideComponent from './components/ui-side/main-side/main-side.component';
+import SplashScreenComponent from './components/splash-screen/splash-screen.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  // Gerekli modülleri ve bileşenleri import ediyoruz
   imports: [
-    CommonModule, // ngSwitch gibi direktifler için
+    CommonModule,
     SplashScreenComponent,
-    LoadingScreenComponent,
-    GameContainerComponent,
+    NavbarComponent,
+    MainSideComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styles: `:host { @apply flex flex-col h-screen } `
 })
-export class AppComponent implements OnInit {
-  
-  // Başlangıç durumunu ayar dosyasından alıyoruz
-  gameState: GameState = APP_SETTINGS.initialState;
+export class AppComponent {
 
-  ngOnInit() {
-    // Uygulama başladığında, splash ekranını belirli bir süre göster.
-    // Bu süre sonunda durumu 'LOADING' olarak değiştir.
-    if (this.gameState === 'SPLASH') {
-      setTimeout(() => {
-        this.gameState = 'LOADING';
-      }, SPLASH_SCREEN_CONFIG.duration);
-    }
-  }
+  // Yüklenme durumunu tutmak için bir Signal kullanıyoruz.
+  // Başlangıçta true, yani splash screen görünecek.
+  isLoading = signal(true);
 
-  /**
-   * Bu metod, LoadingScreenComponent tarafından yayılan (emit)
-   * 'assetsLoaded' event'i tetiklendiğinde çalışır.
-   * Oyun durumunu 'GAME' olarak günceller.
-   */
-  onAssetsLoaded(): void {
-    console.log('Ana bileşen: Assetlerin yüklendiği bilgisi alındı. Oyun başlatılıyor.');
-    this.gameState = 'GAME';
+  constructor() {
+    // APP_INITIALIZER görevleri bittikten sonra bu constructor çalışır.
+    // Artık her şeyin hazır olduğunu biliyoruz.
+    // Küçük bir gecikme ile (animasyon için) splash screen'i gizleyebiliriz.
+    setTimeout(() => {
+      this.isLoading.set(false); // isLoading sinyalini false yap.
+    }, 4000); // 4 saniyelik ek bir bekleme (isteğe bağlı)
   }
 }

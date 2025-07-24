@@ -1,12 +1,18 @@
-<div [ngSwitch]="gameState">
+<!-- Ana Konteyner: Tüm ekranı kaplar ve dikey flex düzeni kullanır -->
+<!-- styles host içerisinde styles vardır. app-root'u etkiler -->
+ 
+@if (isLoading()) {
+    <!--Splash Screen-->
+    <app-splash-screen></app-splash-screen>
+} @else {
+    <!-- 1. Navbar: Mobil'de ikiye bölünmüş, masaüstünde tek parça -->
+    <!-- <app-navbar class="h-[6.5%] bg-indigo-800 flex items-center justify-between lg:justify-center px-4 shadow-lg z-10"></app-navbar> -->   
+    <!--- styles .ts içerisine taşındı -->
+    <app-navbar></app-navbar>
 
-  <app-splash-screen *ngSwitchCase="'SPLASH'"></app-splash-screen>
 
-  <app-loading-screen
-    *ngSwitchCase="'LOADING'"
-    (assetsLoaded)="onAssetsLoaded()">
-  </app-loading-screen>
-
-  <app-game-container *ngSwitchCase="'GAME'"></app-game-container>
-
-</div>
+    <!-- Ana İçerik Alanı: Mobil'de dikey, lg ve üstü ekranlarda yatay flex -->
+    <!-- <app-main-side class="flex flex-col flex-grow overflow-y-auto lg:flex-row"></app-main-side> -->
+    <!--- styles .ts içerisine taşındı -->
+    <app-main-side></app-main-side>
+}

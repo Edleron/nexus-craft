@@ -1,15 +1,22 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, APP_INITIALIZER, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { CreateService } from './services/create.service';
 
-export const appConfig: ApplicationConfig = { providers: [provideZoneChangeDetection({ eventCoalescing: true })]};
+// APP_INITIALIZER için bir factory fonksiyonu
+// Bu fonksiyon, InitializationService'i enjekte eder ve onun init metodunu döndürür.
+export function createAppFactory(initializationService: CreateService): () => Promise<void> {
+  return () => initializationService.init();
+}
 
-// src/app/app.settings.ts
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
 
-// Oyunun durumlarını tanımlayan bir enum veya type oluşturmak kod okunabilirliğini artırır.
-export type GameState = 'SPLASH' | 'LOADING' | 'GAME';
-
-export const APP_SETTINGS = {
-  // Uygulamanın başlangıç durumu
-  initialState: 'SPLASH' as GameState,
-  // Diğer global uygulama ayarları buraya eklenebilir.
-  appName: 'Aviation Game',
+    // APP_INITIALIZER'ı burada sağlıyoruz
+    {
+      provide: APP_INITIALIZER,
+      useFactory: createAppFactory,
+      deps: [CreateService], // Factory'nin bağımlılıklarını belirtiyoruz
+      multi: true // Birden fazla initializer olabileceğini belirtir
+    }
+  ]
 };
