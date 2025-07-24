@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Screen</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Using a common font like Inter for better aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Splash Screen Container -->
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black">
+        <div class="text-center">
+            
+            <!-- Loading Spinner -->
+            <!-- This is a standard Tailwind animation class -->
+            <div class="w-16 h-16 mx-auto mb-4 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+            
+            <!-- Loading Text -->
+            <!-- The original component translated 'splash.welcome'. I've used "Welcome" as a placeholder. -->
+            <h2 class="mb-2 text-xl font-semibold text-white">
+                Welcome
+            </h2>
+            
+            <!-- The original component translated 'splash.initializing'. I've used "Initializing..." as a placeholder. -->
+            <p class="text-sm text-gray-300 animate-pulse">
+                Initializing...
+            </p>
+            
+            <!-- Version Info -->
+            <div class="mt-8 text-xs text-gray-500">
+                <p>Angular v19 • PixiJS v8</p>
+                <p>Aviation Game v1.0.0</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
