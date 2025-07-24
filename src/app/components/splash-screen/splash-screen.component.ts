@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-splash-screen',
-  imports: [],
+  imports: [TranslocoPipe],
   template: `
     <div class="text-center">
         
@@ -13,12 +14,12 @@ import { Component } from '@angular/core';
         <!-- Loading Text -->
         <!-- The original component translated 'splash.welcome'. I've used "Welcome" as a placeholder. -->
         <h2 class="mb-2 text-xl font-semibold text-white">
-            Welcome
+            {{ 'splash.welcome' | transloco }}
         </h2>
         
         <!-- The original component translated 'splash.initializing'. I've used "Initializing..." as a placeholder. -->
         <p class="text-sm text-gray-300 animate-pulse">
-            Initializing...
+            {{ 'splash.initializing' | transloco }}
         </p>
         
         <!-- Version Info -->
