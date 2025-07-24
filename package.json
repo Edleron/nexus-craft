@@ -16,6 +16,7 @@
     "@angular/forms": "^19.2.0",
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
+    "@ngneat/transloco": "^6.0.4",
     "@types/socket.io-client": "^1.4.36",
     "pixi.js": "^8.11.0",
     "rxjs": "~7.8.0",
